@@ -1,3 +1,4 @@
+/*eslint-disable */
 import { useState } from "react";
 import logo from "./logo.svg";
 import "./App.css";
@@ -11,9 +12,30 @@ import {
 } from "react-bootstrap";
 import "bootstrap/dist/css/bootstrap.min.css";
 import data from "./data.js";
+import jquery from "jquery";
+import $ from "jquery";
 
 function App() {
-  let [shoes] = useState(data);
+  let [shoes, shoes변경] = useState(data);
+  let [hidden, hiddenChange] = useState(false);
+  function Card(props) {
+    //컴포넌트화
+    return (
+      <div className="col-md-4">
+        <img
+          src={
+            "https://codingapple1.github.io/shop/shoes" + (props.i + 1) + ".jpg"
+          }
+          width="100%"
+        />
+        <h4>{props.shoes.title}</h4>
+        <p>{props.shoes.price}</p>
+      </div>
+    );
+  }
+  {
+    hidden === true ? <Card /> : null;
+  }
   return (
     <div className="App">
       <Navbar bg="light" expand="lg">
@@ -48,47 +70,22 @@ function App() {
           calling extra attention to featured content or information.
         </p>
         <p>
-          <Button variant="primary">Show Item</Button>
+          <Button
+            id="showButton"
+            onClick={() => {
+              hiddenChange(!hidden);
+            }}
+            variant="primary"
+          >
+            Show Item
+          </Button>
         </p>
       </Jumbotron>
       <div className="container">
         <div className="row">
-          <div className="col-md-4">
-            {shoes.map(function (a) {
-              return (
-                <div className="col-md-4">
-                  <img
-                    src="https://codingapple1.github.io/shop/shoes1.jpg"
-                    width="100%"
-                  />
-                  <h4>{shoes[a].title}</h4>
-                  <p>{shoes[a].price}</p>
-                </div>
-              );
-            })}
-            <img
-              src="https://codingapple1.github.io/shop/shoes1.jpg"
-              width="100%"
-            />
-            <h4>{shoes[0].title}</h4>
-            <p>{shoes[0].price}</p>
-          </div>
-          <div className="col-md-4">
-            <img
-              src="https://codingapple1.github.io/shop/shoes2.jpg"
-              width="100%"
-            />
-            <h4>{shoes[1].title}</h4>
-            <p>{shoes[1].price}</p>
-          </div>
-          <div className="col-md-4">
-            <img
-              src="https://codingapple1.github.io/shop/shoes3.jpg"
-              width="100%"
-            />
-            <h4>{shoes[2].title}</h4>
-            <p>{shoes[2].price}</p>
-          </div>
+          {shoes.map((a, i) => {
+            return <Card key={i} shoes={shoes[i]} i={i} />;
+          })}
         </div>
       </div>
     </div>
