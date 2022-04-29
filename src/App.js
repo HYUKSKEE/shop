@@ -1,3 +1,4 @@
+import { useState } from "react";
 import logo from "./logo.svg";
 import "./App.css";
 import {
@@ -9,8 +10,10 @@ import {
   Button,
 } from "react-bootstrap";
 import "bootstrap/dist/css/bootstrap.min.css";
+import data from "./data.js";
 
 function App() {
+  let [shoes] = useState(data);
   return (
     <div className="App">
       <Navbar bg="light" expand="lg">
@@ -48,32 +51,43 @@ function App() {
           <Button variant="primary">Show Item</Button>
         </p>
       </Jumbotron>
-
       <div className="container">
         <div className="row">
           <div className="col-md-4">
+            {shoes.map(function (a) {
+              return (
+                <div className="col-md-4">
+                  <img
+                    src="https://codingapple1.github.io/shop/shoes1.jpg"
+                    width="100%"
+                  />
+                  <h4>{shoes[a].title}</h4>
+                  <p>{shoes[a].price}</p>
+                </div>
+              );
+            })}
             <img
               src="https://codingapple1.github.io/shop/shoes1.jpg"
               width="100%"
             />
-            <h4>상품명</h4>
-            <p>상품정보</p>
+            <h4>{shoes[0].title}</h4>
+            <p>{shoes[0].price}</p>
           </div>
           <div className="col-md-4">
             <img
               src="https://codingapple1.github.io/shop/shoes2.jpg"
               width="100%"
             />
-            <h4>상품명</h4>
-            <p>상품정보</p>
+            <h4>{shoes[1].title}</h4>
+            <p>{shoes[1].price}</p>
           </div>
           <div className="col-md-4">
             <img
               src="https://codingapple1.github.io/shop/shoes3.jpg"
               width="100%"
             />
-            <h4>상품명</h4>
-            <p>상품정보</p>
+            <h4>{shoes[2].title}</h4>
+            <p>{shoes[2].price}</p>
           </div>
         </div>
       </div>
