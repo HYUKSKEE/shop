@@ -10,6 +10,7 @@ import {
   Jumbotron,
   Button,
 } from "react-bootstrap";
+import { Link, Router, Switch } from "react-router-dom";
 import "bootstrap/dist/css/bootstrap.min.css";
 import data from "./data.js";
 import jquery from "jquery";
@@ -53,8 +54,12 @@ function App() {
           <Navbar.Toggle aria-controls="basic-navbar-nav" />
           <Navbar.Collapse id="basic-navbar-nav">
             <Nav className="me-auto">
-              <Nav.Link href="#home">Home</Nav.Link>
-              <Nav.Link href="#link">Link</Nav.Link>
+              <Nav.Link href="#home">
+                <Link>Home</Link>
+              </Nav.Link>
+              <Nav.Link href="#Detail">
+                <Link>Detail</Link>
+              </Nav.Link>
               <NavDropdown title="Dropdown" id="basic-nav-dropdown">
                 <NavDropdown.Item href="#action/3.1">Action</NavDropdown.Item>
                 <NavDropdown.Item href="#action/3.2">
