@@ -18,6 +18,17 @@ import $ from "jquery";
 function App() {
   let [shoes, shoes변경] = useState(data);
   let [hidden, hiddenChange] = useState(false);
+
+  function Modal() {
+    return (
+      <div className="row">
+        {shoes.map((a, i) => {
+          return <Card key={i} shoes={shoes[i]} i={i} />;
+        })}
+      </div>
+    );
+  }
+
   function Card(props) {
     //컴포넌트화
     return (
@@ -33,9 +44,7 @@ function App() {
       </div>
     );
   }
-  {
-    hidden === true ? <Card /> : null;
-  }
+
   return (
     <div className="App">
       <Navbar bg="light" expand="lg">
@@ -81,13 +90,7 @@ function App() {
           </Button>
         </p>
       </Jumbotron>
-      <div className="container">
-        <div className="row">
-          {shoes.map((a, i) => {
-            return <Card key={i} shoes={shoes[i]} i={i} />;
-          })}
-        </div>
-      </div>
+      <div className="container">{hidden === true ? <Modal /> : null}</div>
     </div>
   );
 }
