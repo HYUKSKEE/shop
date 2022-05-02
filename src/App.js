@@ -54,12 +54,8 @@ function App() {
           <Navbar.Toggle aria-controls="basic-navbar-nav" />
           <Navbar.Collapse id="basic-navbar-nav">
             <Nav className="me-auto">
-              <Nav.Link href="#home">
-                <Link>Home</Link>
-              </Nav.Link>
-              <Nav.Link href="#Detail">
-                <Link>Detail</Link>
-              </Nav.Link>
+              <Nav.Link href="#home">Home </Nav.Link>
+              <Nav.Link href="#Detail">Detail </Nav.Link>
               <NavDropdown title="Dropdown" id="basic-nav-dropdown">
                 <NavDropdown.Item href="#action/3.1">Action</NavDropdown.Item>
                 <NavDropdown.Item href="#action/3.2">
@@ -77,25 +73,27 @@ function App() {
           </Navbar.Collapse>
         </Container>
       </Navbar>
-      <Jumbotron className="background">
-        <h1>60% Season Off</h1>
-        <p>
-          This is a simple hero unit, a simple jumbotron-style component for
-          calling extra attention to featured content or information.
-        </p>
-        <p>
-          <Button
-            id="showButton"
-            onClick={() => {
-              hiddenChange(!hidden);
-            }}
-            variant="primary"
-          >
-            Show Item
-          </Button>
-        </p>
-      </Jumbotron>
-      <div className="container">{hidden === true ? <Modal /> : null}</div>
+      <Route path="/">
+        <Jumbotron className="background">
+          <h1>60% Season Off</h1>
+          <p>
+            This is a simple hero unit, a simple jumbotron-style component for
+            calling extra attention to featured content or information.
+          </p>
+          <p>
+            <Button
+              id="showButton"
+              onClick={() => {
+                hiddenChange(!hidden);
+              }}
+              variant="primary"
+            >
+              Show Item
+            </Button>
+          </p>
+        </Jumbotron>
+        <div className="container">{hidden === true ? <Modal /> : null}</div>
+      </Route>
     </div>
   );
 }
