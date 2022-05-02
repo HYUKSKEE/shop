@@ -41,3 +41,10 @@
   background-image: url("./background.jpg");
   color: white;
 }
+
+.btn:not(:disabled):not(.disabled):focus,
+.btn:not(:disabled):not(.disabled):active {
+  cursor: pointer;
+  outline: none !important;
+  box-shadow: none !important;
+}

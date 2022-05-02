@@ -7,4 +7,8 @@
 05/02 ToDoList
 
 1. React useState boolean 활용 button 이벤트 넣기 - [o]
-2. Router Part 강의
+2. showButton 클릭후 outline 없애기 - [o]
+3. React 컴포넌트 import, export (내가 만들어둔 카드박스 모달 모듈화?)
+4. React Link로 페이지 이동버튼 만들기
+5. 다른방법으로 Link 버튼 만들기(Link to 활용하여 detail페이지 이동)
+6. Swith 컴포넌트
