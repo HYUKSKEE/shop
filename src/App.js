@@ -10,11 +10,9 @@ import {
   Jumbotron,
   Button,
 } from "react-bootstrap";
-import { Link, Router, Switch } from "react-router-dom";
 import "bootstrap/dist/css/bootstrap.min.css";
 import data from "./data.js";
-import jquery from "jquery";
-import $ from "jquery";
+import { Routes, Route, Link } from "react-router-dom";
 
 function App() {
   let [shoes, shoes변경] = useState(data);
@@ -73,27 +71,25 @@ function App() {
           </Navbar.Collapse>
         </Container>
       </Navbar>
-      <Route path="/">
-        <Jumbotron className="background">
-          <h1>60% Season Off</h1>
-          <p>
-            This is a simple hero unit, a simple jumbotron-style component for
-            calling extra attention to featured content or information.
-          </p>
-          <p>
-            <Button
-              id="showButton"
-              onClick={() => {
-                hiddenChange(!hidden);
-              }}
-              variant="primary"
-            >
-              Show Item
-            </Button>
-          </p>
-        </Jumbotron>
-        <div className="container">{hidden === true ? <Modal /> : null}</div>
-      </Route>
+      <Jumbotron className="background">
+        <h1>60% Season Off</h1>
+        <p>
+          This is a simple hero unit, a simple jumbotron-style component for
+          calling extra attention to featured content or information.
+        </p>
+        <p>
+          <Button
+            id="showButton"
+            onClick={() => {
+              hiddenChange(!hidden);
+            }}
+            variant="primary"
+          >
+            Show Item
+          </Button>
+        </p>
+      </Jumbotron>
+      <div className="container">{hidden === true ? <Modal /> : null}</div>
     </div>
   );
 }
