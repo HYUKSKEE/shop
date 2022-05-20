@@ -12,11 +12,13 @@ import {
 } from "react-bootstrap";
 import "bootstrap/dist/css/bootstrap.min.css";
 import data from "./data.js";
-import { Routes, Route, Link } from "react-router-dom";
+import { Routes, Route, Link, useNavigate, Outlet } from "react-router-dom";
+import Detail from "./route/Detail";
 
 function App() {
   let [shoes, shoes변경] = useState(data);
   let [hidden, hiddenChange] = useState(false);
+  let navigate = useNavigate();
 
   function Modal() {
     return (
@@ -46,31 +48,69 @@ function App() {
 
   return (
     <div className="App">
-      <Navbar bg="light" expand="lg">
-        <Container>
-          <Navbar.Brand href="#home">Hyukskee Shop</Navbar.Brand>
-          <Navbar.Toggle aria-controls="basic-navbar-nav" />
-          <Navbar.Collapse id="basic-navbar-nav">
-            <Nav className="me-auto">
-              <Nav.Link href="#home">Home </Nav.Link>
-              <Nav.Link href="#Detail">Detail </Nav.Link>
-              <NavDropdown title="Dropdown" id="basic-nav-dropdown">
-                <NavDropdown.Item href="#action/3.1">Action</NavDropdown.Item>
-                <NavDropdown.Item href="#action/3.2">
-                  Another action
-                </NavDropdown.Item>
-                <NavDropdown.Item href="#action/3.3">
-                  Something
-                </NavDropdown.Item>
-                <NavDropdown.Divider />
-                <NavDropdown.Item href="#action/3.4">
-                  Separated link
-                </NavDropdown.Item>
-              </NavDropdown>
-            </Nav>
-          </Navbar.Collapse>
-        </Container>
-      </Navbar>
+      <header>
+        <Navbar bg="light" expand="lg">
+          <Container>
+            <Navbar.Brand href="#home">Hyukskee Shop</Navbar.Brand>
+            <Navbar.Toggle aria-controls="basic-navbar-nav" />
+            <Navbar.Collapse id="basic-navbar-nav">
+              <Nav className="me-auto">
+                <Nav.Link href="#">Home</Nav.Link>
+                <Nav.Link
+                  onClick={() => {
+                    navigate("/detail");
+                  }}
+                >
+                  Detail
+                </Nav.Link>
+                <NavDropdown title="Dropdown" id="basic-nav-dropdown">
+                  <NavDropdown.Item href="#action/3.1">Action</NavDropdown.Item>
+                  <NavDropdown.Item href="#action/3.2">
+                    Another action
+                  </NavDropdown.Item>
+                  <NavDropdown.Item href="#action/3.3">
+                    Something
+                  </NavDropdown.Item>
+                  <NavDropdown.Divider />
+                  <NavDropdown.Item href="#action/3.4">
+                    Separated link
+                  </NavDropdown.Item>
+                </NavDropdown>
+              </Nav>
+            </Navbar.Collapse>
+          </Container>
+        </Navbar>
+      </header>
+
+      <Routes>
+        <Route
+          path="/"
+          component={
+            <>
+              <Jumbotron className="background">
+                <h1>60% Season Off</h1>
+                <p>
+                  This is a simple hero unit, a simple jumbotron-style component
+                  for calling extra attention to featured content or
+                  information.
+                </p>
+                <p>
+                  <Button
+                    id="showButton"
+                    onClick={() => {
+                      hiddenChange(!hidden);
+                    }}
+                    variant="primary"
+                  >
+                    Show Item
+                  </Button>
+                </p>
+              </Jumbotron>
+            </>
+          }
+        ></Route>
+        <Route path="/detail" component={<Detail />} />
+      </Routes>
       <Jumbotron className="background">
         <h1>60% Season Off</h1>
         <p>
@@ -93,5 +133,11 @@ function App() {
     </div>
   );
 }
-
+{
+  /* <div>
+              {shoes.map((a, i) => {
+                return <Card key={i} shoes={shoes[i]} i={i} />;
+              })}
+            </div> */
+}
 export default App;
