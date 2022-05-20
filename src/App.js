@@ -13,7 +13,7 @@ import {
 import "bootstrap/dist/css/bootstrap.min.css";
 import data from "./data.js";
 import { Routes, Route, Link, useNavigate, Outlet } from "react-router-dom";
-import Detail from "./route/Detail";
+import Detail from "./route/Detail.js";
 
 function App() {
   let [shoes, shoes변경] = useState(data);
@@ -55,14 +55,8 @@ function App() {
             <Navbar.Toggle aria-controls="basic-navbar-nav" />
             <Navbar.Collapse id="basic-navbar-nav">
               <Nav className="me-auto">
-                <Nav.Link href="#">Home</Nav.Link>
-                <Nav.Link
-                  onClick={() => {
-                    navigate("/detail");
-                  }}
-                >
-                  Detail
-                </Nav.Link>
+                <Nav.Link to="/">Home</Nav.Link>
+                <Link to="/detail">Detail</Link>
                 <NavDropdown title="Dropdown" id="basic-nav-dropdown">
                   <NavDropdown.Item href="#action/3.1">Action</NavDropdown.Item>
                   <NavDropdown.Item href="#action/3.2">
@@ -81,36 +75,38 @@ function App() {
           </Container>
         </Navbar>
       </header>
+      <div>
+        <Routes>
+          <Route
+            path="/"
+            component={
+              <>
+                <Jumbotron className="background">
+                  <h1>60% Season Off</h1>
+                  <p>
+                    This is a simple hero unit, a simple jumbotron-style
+                    component for calling extra attention to featured content or
+                    information.
+                  </p>
+                  <p>
+                    <Button
+                      id="showButton"
+                      onClick={() => {
+                        hiddenChange(!hidden);
+                      }}
+                      variant="primary"
+                    >
+                      Show Item
+                    </Button>
+                  </p>
+                </Jumbotron>
+              </>
+            }
+          ></Route>
+          <Route path="/detail" component={<Detail />} />
+        </Routes>
+      </div>
 
-      <Routes>
-        <Route
-          path="/"
-          component={
-            <>
-              <Jumbotron className="background">
-                <h1>60% Season Off</h1>
-                <p>
-                  This is a simple hero unit, a simple jumbotron-style component
-                  for calling extra attention to featured content or
-                  information.
-                </p>
-                <p>
-                  <Button
-                    id="showButton"
-                    onClick={() => {
-                      hiddenChange(!hidden);
-                    }}
-                    variant="primary"
-                  >
-                    Show Item
-                  </Button>
-                </p>
-              </Jumbotron>
-            </>
-          }
-        ></Route>
-        <Route path="/detail" component={<Detail />} />
-      </Routes>
       <Jumbotron className="background">
         <h1>60% Season Off</h1>
         <p>

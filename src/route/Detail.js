@@ -1,5 +1,9 @@
 function Detail() {
-  return <div>상세페이지 입니다.</div>;
+  return (
+    <>
+      <div>상세페이지 입니다.</div>
+    </>
+  );
 }
 
 export default Detail;
