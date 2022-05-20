@@ -13,7 +13,7 @@ import {
 import "bootstrap/dist/css/bootstrap.min.css";
 import data from "./data.js";
 import { Routes, Route, Link, useNavigate, Outlet } from "react-router-dom";
-import Detail from "./route/Detail.js";
+import Detail from "./pages/Detail.js";
 
 function App() {
   let [shoes, shoes변경] = useState(data);
@@ -79,7 +79,7 @@ function App() {
         <Routes>
           <Route
             path="/"
-            component={
+            element={
               <>
                 <Jumbotron className="background">
                   <h1>60% Season Off</h1>
@@ -103,28 +103,9 @@ function App() {
               </>
             }
           ></Route>
-          <Route path="/detail" component={<Detail />} />
+          <Route path="/detail" element={<Detail />} />
         </Routes>
       </div>
-
-      <Jumbotron className="background">
-        <h1>60% Season Off</h1>
-        <p>
-          This is a simple hero unit, a simple jumbotron-style component for
-          calling extra attention to featured content or information.
-        </p>
-        <p>
-          <Button
-            id="showButton"
-            onClick={() => {
-              hiddenChange(!hidden);
-            }}
-            variant="primary"
-          >
-            Show Item
-          </Button>
-        </p>
-      </Jumbotron>
       <div className="container">{hidden === true ? <Modal /> : null}</div>
     </div>
   );
