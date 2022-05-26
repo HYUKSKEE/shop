@@ -1,6 +1,5 @@
 /*eslint-disable */
 import { useState } from "react";
-import logo from "./logo.svg";
 import "./App.css";
 import {
   Navbar,
@@ -14,7 +13,7 @@ import "bootstrap/dist/css/bootstrap.min.css";
 import data from "./data.js";
 import { Routes, Route, Link, useNavigate, Outlet } from "react-router-dom";
 import Detail from "./pages/Detail.js";
-import { renderIntoDocument } from "react-dom/test-utils";
+import Card from "./pages/Card";
 
 function App() {
   let [shoes, shoes변경] = useState(data);
@@ -31,7 +30,7 @@ function App() {
     );
   }
 
-  function Card(props) {
+  /* function Card(props) {
     //컴포넌트화
     return (
       <div className="col-md-4">
@@ -46,7 +45,7 @@ function App() {
       </div>
     );
   }
-
+ */
   return (
     <div className="App">
       <header onClick={() => hiddenChange(false)}>
