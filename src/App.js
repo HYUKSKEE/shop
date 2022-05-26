@@ -14,6 +14,7 @@ import "bootstrap/dist/css/bootstrap.min.css";
 import data from "./data.js";
 import { Routes, Route, Link, useNavigate, Outlet } from "react-router-dom";
 import Detail from "./pages/Detail.js";
+import { renderIntoDocument } from "react-dom/test-utils";
 
 function App() {
   let [shoes, shoes변경] = useState(data);
@@ -48,15 +49,34 @@ function App() {
 
   return (
     <div className="App">
-      <header>
+      <header onClick={() => hiddenChange(false)}>
         <Navbar bg="light" expand="lg">
           <Container>
-            <Navbar.Brand href="#home">Hyukskee Shop</Navbar.Brand>
+            <Navbar.Brand
+              onClick={() => {
+                navigate("./");
+              }}
+              style={{ cursor: "pointer" }}
+            >
+              Hyukskee Shop
+            </Navbar.Brand>
             <Navbar.Toggle aria-controls="basic-navbar-nav" />
             <Navbar.Collapse id="basic-navbar-nav">
               <Nav className="me-auto">
-                <Nav.Link to="/">Home</Nav.Link>
-                <Link to="/detail">Detail</Link>
+                <Nav.Link
+                  onClick={() => {
+                    navigate("./");
+                  }}
+                >
+                  Home
+                </Nav.Link>
+                <Nav.Link
+                  onClick={() => {
+                    navigate("/detail");
+                  }}
+                >
+                  Cart
+                </Nav.Link>
                 <NavDropdown title="Dropdown" id="basic-nav-dropdown">
                   <NavDropdown.Item href="#action/3.1">Action</NavDropdown.Item>
                   <NavDropdown.Item href="#action/3.2">
@@ -117,4 +137,5 @@ function App() {
               })}
             </div> */
 }
+
 export default App;

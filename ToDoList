@@ -12,3 +12,8 @@
 4. React Link로 페이지 이동버튼 만들기
 5. 다른방법으로 Link 버튼 만들기(Link to 활용하여 detail페이지 이동)
 6. Swith 컴포넌트
+
+05/26 
+1. Modal 영역 밖 클릭시 컴포넌트 안보이게하기 - [o]
+2. Detail페이지 컴포넌트 디자인
+3. 주문 modal 페이지 라우터 분리 및 UI mark up
