@@ -1,5 +1,9 @@
+import { useState } from "react";
+
 function Card(props) {
   //컴포넌트화
+
+  let [cart, handleCart] = useState({ title: "" });
   return (
     <div className="col-md-4">
       <img
@@ -14,6 +18,7 @@ function Card(props) {
         onClick={(e) => {
           e.preventDefault();
           handleCart({ title: props.shoes.title });
+          console.log(handleCart);
           alert("Cart에 담겼습니다.");
         }}
       >

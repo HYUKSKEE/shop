@@ -17,7 +17,6 @@ import Card from "./pages/Card";
 function App() {
   let [shoes, shoes변경] = useState(data);
   let [hidden, hiddenChange] = useState(false);
-  let [cart, handleCart] = useState({ title: "" });
   let navigate = useNavigate();
 
   function Modal() {
