@@ -1,9 +1,14 @@
 import { useState } from "react";
-
+import Data from "../data";
 function Card(props) {
   //컴포넌트화
 
-  let [cart, handleCart] = useState({ title: "" });
+  let [shoesData, handleShoesData] = useState(Data);
+
+  function OrderList(props) {
+    handleShoesData(props.shoesData.title);
+    console.log({ handleShoesData });
+  }
   return (
     <div className="col-md-4">
       <img
@@ -17,8 +22,7 @@ function Card(props) {
       <button
         onClick={(e) => {
           e.preventDefault();
-          handleCart({ title: props.shoes.title });
-          console.log(handleCart);
+          OrderList(props);
           alert("Cart에 담겼습니다.");
         }}
       >
