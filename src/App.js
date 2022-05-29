@@ -12,12 +12,12 @@ import {
 import "bootstrap/dist/css/bootstrap.min.css";
 import data from "./data.js";
 import { Routes, Route, Link, useNavigate, Outlet } from "react-router-dom";
-import Detail from "./pages/Detail.js";
 import Card from "./pages/Card";
 
 function App() {
   let [shoes, shoes변경] = useState(data);
   let [hidden, hiddenChange] = useState(false);
+  let [cart, handleCart] = useState({ title: "" });
   let navigate = useNavigate();
 
   function Modal() {
@@ -30,22 +30,14 @@ function App() {
     );
   }
 
-  /* function Card(props) {
-    //컴포넌트화
+  function Cart() {
     return (
-      <div className="col-md-4">
-        <img
-          src={
-            "https://codingapple1.github.io/shop/shoes" + (props.i + 1) + ".jpg"
-          }
-          width="100%"
-        />
-        <h4>{props.shoes.title}</h4>
-        <p>{props.shoes.price}</p>
-      </div>
+      <>
+        <div>주문정보</div>
+      </>
     );
   }
- */
+
   return (
     <div className="App">
       <header onClick={() => hiddenChange(false)}>
@@ -71,7 +63,7 @@ function App() {
                 </Nav.Link>
                 <Nav.Link
                   onClick={() => {
-                    navigate("/detail");
+                    navigate("/Cart");
                   }}
                 >
                   Cart
@@ -122,7 +114,7 @@ function App() {
               </>
             }
           ></Route>
-          <Route path="/detail" element={<Detail />} />
+          <Route path="/Cart" element={<Cart />} />
         </Routes>
       </div>
       <div className="container">{hidden === true ? <Modal /> : null}</div>

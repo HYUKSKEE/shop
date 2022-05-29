@@ -10,6 +10,15 @@ function Card(props) {
       />
       <h4>{props.shoes.title}</h4>
       <p>{props.shoes.price}</p>
+      <button
+        onClick={(e) => {
+          e.preventDefault();
+          handleCart({ title: props.shoes.title });
+          alert("Cart에 담겼습니다.");
+        }}
+      >
+        주문하기
+      </button>
     </div>
   );
 }
