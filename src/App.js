@@ -32,7 +32,7 @@ function App() {
   function Cart() {
     return (
       <>
-        <div>주문정보</div>
+        <div>Cart page</div>
       </>
     );
   }
